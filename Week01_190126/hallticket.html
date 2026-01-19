@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hall Ticket</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .ticket {
+            border: 2px solid black;
+            padding: 20px;
+            width: 600px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        .label {
+            font-weight: bold;
+            background-color: #e8e8e8;
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+    <!-- DETAILED EXPLANATION OF HALL TICKET STRUCTURE -->
+    <h2>📋 How to Create a Hall Ticket - Step by Step</h2>
+    
+    <h3>Understanding Components:</h3>
+    <p><strong>1. Outer Container:</strong> A div wraps everything (like a frame)</p>
+    <p><strong>2. Header Section:</strong> Contains institution name and ticket title</p>
+    <p><strong>3. Student Info Table:</strong> Personal details in label-value format</p>
+    <p><strong>4. Exam Details Table:</strong> Exam specific information</p>
+    <p><strong>5. Footer:</strong> Instructions and signatures</p>
+
+    <hr>
+
+    <!-- HALL TICKET EXAMPLE -->
+    <h2>🎫 Sample Hall Ticket</h2>
+
+    <div class="ticket">
+        <!-- HEADER SECTION -->
+        <div class="header">
+            <h1>XYZ UNIVERSITY</h1>
+            <h2>EXAMINATION HALL TICKET</h2>
+            <p>Semester Examination - January 2026</p>
+        </div>
+
+        <!-- STUDENT INFORMATION TABLE -->
+        <h3>Student Information</h3>
+        <table>
+            <tr>
+                <td class="label">Roll Number</td>
+                <td>12345</td>
+            </tr>
+            <tr>
+                <td class="label">Student Name</td>
+                <td>John Doe</td>
+            </tr>
+            <tr>
+                <td class="label">Date of Birth</td>
+                <td>15-07-2005</td>
+            </tr>
+            <tr>
+                <td class="label">Branch</td>
+                <td>Computer Science</td>
+            </tr>
+            <tr>
+                <td class="label">Semester</td>
+                <td>2nd Semester</td>
+            </tr>
+        </table>
+
+        <br><br>
+
+        <!-- EXAM DETAILS TABLE -->
+        <h3>Exam Details</h3>
+        <table>
+            <thead>
+                <tr style="background-color: #cccccc;">
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CS101</td>
+                    <td>Data Structures</td>
+                    <td>20-01-2026</td>
+                    <td>10:00 AM - 1:00 PM</td>
+                </tr>
+                <tr>
+                    <td>CS102</td>
+                    <td>Web Development</td>
+                    <td>22-01-2026</td>
+                    <td>10:00 AM - 1:00 PM</td>
+                </tr>
+                <tr>
+                    <td>CS103</td>
+                    <td>Database Management</td>
+                    <td>25-01-2026</td>
+                    <td>2:00 PM - 5:00 PM</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <!-- EXAM CENTER & INSTRUCTIONS -->
+        <h3>Exam Center Information</h3>
+        <table>
+            <tr>
+                <td class="label">Exam Center</td>
+                <td>Main Campus - Building A</td>
+            </tr>
+            <tr>
+                <td class="label">Room Number</td>
+                <td>A-205</td>
+            </tr>
+            <tr>
+                <td class="label">Seat Number</td>
+                <td>45</td>
+            </tr>
+        </table>
+
+        <br><br>
+
+        <!-- INSTRUCTIONS -->
+        <h3>Important Instructions:</h3>
+        <ul>
+            <li>Reach exam center 15 minutes before the exam starts</li>
+            <li>Bring this hall ticket and valid ID proof</li>
+            <li>Mobile phones are not allowed in exam center</li>
+            <li>Any kind of cheating will result in disqualification</li>
+            <li>Report to invigilator before entering the exam hall</li>
+        </ul>
+
+        <br>
+
+        <!-- SIGNATURE SECTION -->
+        <table>
+            <tr>
+                <td style="text-align: center;">
+                    ___________________<br>
+                    Controller of Exams
+                </td>
+                <td style="text-align: center;">
+                    ___________________<br>
+                    Principal
+                </td>
+            </tr>
+        </table>
+
+        <p style="text-align: center; margin-top: 20px; font-size: 12px;">
+            <strong>Note:</strong> This is a sample hall ticket. Keep this ticket safe and carry it to the exam center.
+        </p>
+    </div>
+
+    <hr>
+
+    <!-- CODE BREAKDOWN WITH COMMENTS -->
+    <h2>📝 Code Breakdown - Simple Version (For Learning)</h2>
+
+    <h3>Minimal Hall Ticket Code (Just the essentials):</h3>
+    <pre style="background-color: #f0f0f0; padding: 15px; border-left: 4px solid blue; overflow-x: auto;">
+&lt;!-- Basic Hall Ticket Structure --&gt;
+&lt;div class="ticket"&gt;
+    &lt;!-- Header with title --&gt;
+    &lt;h1&gt;UNIVERSITY NAME&lt;/h1&gt;
+    &lt;h2&gt;HALL TICKET&lt;/h2&gt;
+
+    &lt;!-- Student Details in Table Format --&gt;
+    &lt;h3&gt;Student Details&lt;/h3&gt;
+    &lt;table border="1"&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;Roll No&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;12345&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;John Doe&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;Branch&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;Computer Science&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+
+    &lt;!-- Exam Schedule in Table Format --&gt;
+    &lt;h3&gt;Exam Schedule&lt;/h3&gt;
+    &lt;table border="1"&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Subject&lt;/th&gt;
+            &lt;th&gt;Date&lt;/th&gt;
+            &lt;th&gt;Time&lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Math&lt;/td&gt;
+            &lt;td&gt;20-01-2026&lt;/td&gt;
+            &lt;td&gt;10:00 AM&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/div&gt;</pre>
+
+    <h3>Key Points for Beginners:</h3>
+    <table border="1" style="margin: 20px 0;">
+        <tr style="background-color: #e8e8e8;">
+            <th>Element</th>
+            <th>Purpose</th>
+            <th>Example</th>
+        </tr>
+        <tr>
+            <td><strong>&lt;h1&gt; &lt;h2&gt;</strong></td>
+            <td>Large titles and headings</td>
+            <td>&lt;h1&gt;UNIVERSITY&lt;/h1&gt;</td>
+        </tr>
+        <tr>
+            <td><strong>&lt;table&gt;</strong></td>
+            <td>Creates structured data layout</td>
+            <td>&lt;table border="1"&gt;</td>
+        </tr>
+        <tr>
+            <td><strong>&lt;tr&gt;</strong></td>
+            <td>Table Row</td>
+            <td>&lt;tr&gt; &lt;/tr&gt;</td>
+        </tr>
+        <tr>
+            <td><strong>&lt;td&gt;</strong></td>
+            <td>Table Data (regular cell)</td>
+            <td>&lt;td&gt;12345&lt;/td&gt;</td>
+        </tr>
+        <tr>
+            <td><strong>&lt;th&gt;</strong></td>
+            <td>Table Header (bold cell)</td>
+            <td>&lt;th&gt;Roll No&lt;/th&gt;</td>
+        </tr>
+        <tr>
+            <td><strong>&lt;strong&gt;</strong></td>
+            <td>Make text bold</td>
+            <td>&lt;strong&gt;Important&lt;/strong&gt;</td>
+        </tr>
+        <tr>
+            <td><strong>&lt;ul&gt; &lt;li&gt;</strong></td>
+            <td>Unordered list (bullets)</td>
+            <td>&lt;li&gt;Instruction&lt;/li&gt;</td>
+        </tr>
+    </table>
+
+</body>
+</html>
