@@ -102,18 +102,84 @@
             border-left: 4px solid #ff9800;
             margin: 15px 0;
         }
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid black;
+            padding-bottom: 15px;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+        .student-photo {
+            width: 120px;
+            height: 150px;
+            border: 2px solid black;
+            object-fit: cover;
+        }
+        .student-info-top {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            padding: 15px;
+            align-items: flex-start;
+        }
+        .photo-section {
+            text-align: center;
+        }
+        .photo-section p {
+            margin: 5px 0;
+            font-size: 12px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="ticket">
-        <!-- HEADER SECTION -->
-        <div class="header">
-            <h1>UNIVERSITY OF TECHNOLOGY</h1>
-            <h2>EXAMINATION HALL TICKET</h2>
-            <p>January 2026 Semester Examination</p>
+        <!-- HEADER SECTION WITH LOGO -->
+        <div class="header-top">
+            <!-- University Logo (Left) -->
+            <div>
+                <img src="https://via.placeholder.com/80" alt="University Logo" class="logo">
+            </div>
+            <!-- Title (Center) -->
+            <div style="flex: 1; text-align: center;">
+                <h1 style="margin: 5px 0; font-size: 28px;">UNIVERSITY OF TECHNOLOGY</h1>
+                <h2 style="margin: 5px 0; font-size: 22px; color: #333;">EXAMINATION HALL TICKET</h2>
+                <p style="margin: 5px 0; font-size: 14px; color: #666;">January 2026 Semester Examination</p>
+            </div>
+            <!-- Empty space (Right) for balance -->
+            <div style="width: 80px;"></div>
         </div>
 
-        <!-- STUDENT INFORMATION -->
+        <!-- STUDENT INFORMATION WITH PHOTO -->
+        <div class="student-info-top">
+            <div style="flex: 1;">
+                <div class="section-title" style="margin-top: 0;">Quick Information</div>
+                <table style="margin: 0;">
+                    <tr>
+                        <td class="label">Roll Number</td>
+                        <td>2024001234</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Student Name</td>
+                        <td>Samruddhi Chondekar</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- Student Photo (Right) -->
+            <div class="photo-section">
+                <img src="https://img.freepik.com/premium-photo/young-woman-college-student-portrait-university-campus-learning-school-studying-higher-education-knowledge-canada-happy-proud-motivation-gen-z-youth-portrait-with-notebooks_590464-88225.jpg?w=2000" alt="Photo" class="student-photo">
+                <p>Passport Size<br>Photo</p>
+            </div>
+        </div>
+
+        <!-- FULL STUDENT INFORMATION -->
         <div class="section-title">Student Information</div>
         <table>
             <tr>
