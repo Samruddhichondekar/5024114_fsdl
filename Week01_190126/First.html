@@ -8,5 +8,96 @@
 <body>
     <h1>MY FIRST PROGRAM</h1>
     <a href="https://www.google.com/">google</a>
+
+    <h2>Understanding HTML Tables</h2>
+    
+    <!-- BASIC TABLE EXAMPLE -->
+    <h3>1. Basic Table (Simple 3x3)</h3>
+    <table border="1">
+        <tr>
+            <td>Name</td>
+            <td>Age</td>
+            <td>City</td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>25</td>
+            <td>New York</td>
+        </tr>
+        <tr>
+            <td>Sarah</td>
+            <td>30</td>
+            <td>London</td>
+        </tr>
+    </table>
+
+    <!-- TABLE WITH HEADERS -->
+    <h3>2. Table with Header Row (Using &lt;th&gt;)</h3>
+    <table border="1">
+        <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Apple</td>
+            <td>$1.50</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Banana</td>
+            <td>$0.75</td>
+            <td>12</td>
+        </tr>
+    </table>
+
+    <!-- TABLE WITH PROPER STRUCTURE -->
+    <h3>3. Table with &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td>$5000</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>$6000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Total</th>
+                <th>$11000</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <!-- TABLE WITH MERGED CELLS -->
+    <h3>4. Table with Merged Cells (colspan & rowspan)</h3>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Contact</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>john@email.com</td>
+            <td>123-456-7890</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Sarah</td>
+            <td>sarah@email.com</td>
+            <td>987-654-3210</td>
+        </tr>
+        <tr>
+            <td colspan="2">Works at Tech Company</td>
+        </tr>
+    </table>
 </body>
 </html>
