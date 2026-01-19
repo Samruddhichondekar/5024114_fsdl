@@ -8,94 +8,150 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #f5f5f5;
         }
         .ticket {
-            border: 2px solid black;
-            padding: 20px;
-            width: 600px;
-            background-color: #f9f9f9;
+            border: 3px solid black;
+            padding: 30px;
+            width: 700px;
+            background-color: white;
+            margin: 20px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             border-bottom: 2px solid black;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+        }
+        .header h1 {
+            margin: 5px 0;
+            font-size: 28px;
+        }
+        .header h2 {
+            margin: 5px 0;
+            font-size: 22px;
+            color: #333;
+        }
+        .header p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px 0;
         }
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
+        th, td {
+            border: 1px solid #999;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #d3d3d3;
+            font-weight: bold;
         }
         .label {
-            font-weight: bold;
             background-color: #e8e8e8;
-            width: 30%;
+            font-weight: bold;
+            width: 35%;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+        .instructions {
+            margin: 20px 0;
+        }
+        .instructions ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .instructions li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .signature-section {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature {
+            text-align: center;
+            width: 45%;
+        }
+        .signature-line {
+            border-top: 1px solid black;
+            margin-top: 40px;
+            padding-top: 5px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+        .important {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-left: 4px solid #ff9800;
+            margin: 15px 0;
         }
     </style>
 </head>
 <body>
-    <!-- DETAILED EXPLANATION OF HALL TICKET STRUCTURE -->
-    <h2>📋 How to Create a Hall Ticket - Step by Step</h2>
-    
-    <h3>Understanding Components:</h3>
-    <p><strong>1. Outer Container:</strong> A div wraps everything (like a frame)</p>
-    <p><strong>2. Header Section:</strong> Contains institution name and ticket title</p>
-    <p><strong>3. Student Info Table:</strong> Personal details in label-value format</p>
-    <p><strong>4. Exam Details Table:</strong> Exam specific information</p>
-    <p><strong>5. Footer:</strong> Instructions and signatures</p>
-
-    <hr>
-
-    <!-- HALL TICKET EXAMPLE -->
-    <h2>🎫 Sample Hall Ticket</h2>
-
     <div class="ticket">
         <!-- HEADER SECTION -->
         <div class="header">
-            <h1>XYZ UNIVERSITY</h1>
+            <h1>UNIVERSITY OF TECHNOLOGY</h1>
             <h2>EXAMINATION HALL TICKET</h2>
-            <p>Semester Examination - January 2026</p>
+            <p>January 2026 Semester Examination</p>
         </div>
 
-        <!-- STUDENT INFORMATION TABLE -->
-        <h3>Student Information</h3>
+        <!-- STUDENT INFORMATION -->
+        <div class="section-title">Student Information</div>
         <table>
             <tr>
                 <td class="label">Roll Number</td>
-                <td>12345</td>
+                <td>2024001234</td>
             </tr>
             <tr>
                 <td class="label">Student Name</td>
-                <td>John Doe</td>
+                <td>Samruddhi Chondekar</td>
             </tr>
             <tr>
                 <td class="label">Date of Birth</td>
-                <td>15-07-2005</td>
+                <td>10-05-2006</td>
             </tr>
             <tr>
-                <td class="label">Branch</td>
-                <td>Computer Science</td>
+                <td class="label">Department</td>
+                <td>Computer Science & Engineering</td>
             </tr>
             <tr>
                 <td class="label">Semester</td>
                 <td>2nd Semester</td>
             </tr>
+            <tr>
+                <td class="label">Registration Number</td>
+                <td>REG/2024/12345</td>
+            </tr>
         </table>
 
-        <br><br>
-
-        <!-- EXAM DETAILS TABLE -->
-        <h3>Exam Details</h3>
+        <!-- EXAM SCHEDULE -->
+        <div class="section-title">Examination Schedule</div>
         <table>
             <thead>
-                <tr style="background-color: #cccccc;">
+                <tr>
                     <th>Subject Code</th>
                     <th>Subject Name</th>
                     <th>Date</th>
                     <th>Time</th>
+                    <th>Duration</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,31 +159,43 @@
                     <td>CS101</td>
                     <td>Data Structures</td>
                     <td>20-01-2026</td>
-                    <td>10:00 AM - 1:00 PM</td>
+                    <td>10:00 AM</td>
+                    <td>3 Hours</td>
                 </tr>
                 <tr>
                     <td>CS102</td>
                     <td>Web Development</td>
                     <td>22-01-2026</td>
-                    <td>10:00 AM - 1:00 PM</td>
+                    <td>10:00 AM</td>
+                    <td>3 Hours</td>
                 </tr>
                 <tr>
                     <td>CS103</td>
                     <td>Database Management</td>
                     <td>25-01-2026</td>
-                    <td>2:00 PM - 5:00 PM</td>
+                    <td>2:00 PM</td>
+                    <td>3 Hours</td>
+                </tr>
+                <tr>
+                    <td>CS104</td>
+                    <td>Operating Systems</td>
+                    <td>27-01-2026</td>
+                    <td>10:00 AM</td>
+                    <td>3 Hours</td>
                 </tr>
             </tbody>
         </table>
 
-        <br><br>
-
-        <!-- EXAM CENTER & INSTRUCTIONS -->
-        <h3>Exam Center Information</h3>
+        <!-- EXAM CENTER INFORMATION -->
+        <div class="section-title">Exam Center Information</div>
         <table>
             <tr>
                 <td class="label">Exam Center</td>
                 <td>Main Campus - Building A</td>
+            </tr>
+            <tr>
+                <td class="label">Center Code</td>
+                <td>CENTER001</td>
             </tr>
             <tr>
                 <td class="label">Room Number</td>
@@ -137,130 +205,49 @@
                 <td class="label">Seat Number</td>
                 <td>45</td>
             </tr>
-        </table>
-
-        <br><br>
-
-        <!-- INSTRUCTIONS -->
-        <h3>Important Instructions:</h3>
-        <ul>
-            <li>Reach exam center 15 minutes before the exam starts</li>
-            <li>Bring this hall ticket and valid ID proof</li>
-            <li>Mobile phones are not allowed in exam center</li>
-            <li>Any kind of cheating will result in disqualification</li>
-            <li>Report to invigilator before entering the exam hall</li>
-        </ul>
-
-        <br>
-
-        <!-- SIGNATURE SECTION -->
-        <table>
             <tr>
-                <td style="text-align: center;">
-                    ___________________<br>
-                    Controller of Exams
-                </td>
-                <td style="text-align: center;">
-                    ___________________<br>
-                    Principal
-                </td>
+                <td class="label">Reporting Time</td>
+                <td>30 minutes before exam time</td>
             </tr>
         </table>
 
-        <p style="text-align: center; margin-top: 20px; font-size: 12px;">
-            <strong>Note:</strong> This is a sample hall ticket. Keep this ticket safe and carry it to the exam center.
-        </p>
+        <!-- INSTRUCTIONS -->
+        <div class="section-title">Important Instructions</div>
+        <div class="instructions">
+            <ul>
+                <li>Report to the exam center at least 30 minutes before the scheduled exam time</li>
+                <li>Bring this hall ticket and valid photo ID proof (Student ID/Aadhar/Passport)</li>
+                <li>Mobile phones, tablets, and other electronic devices are strictly not allowed inside the exam hall</li>
+                <li>Only blue or black pen should be used for writing answers</li>
+                <li>Calculators are allowed only for subjects where explicitly permitted</li>
+                <li>Any kind of cheating or malpractice will result in cancellation of exam and disciplinary action</li>
+                <li>Rough work/calculations should be done on the rough sheet provided</li>
+                <li>Do not leave the exam hall during the first 30 minutes or last 15 minutes of the exam</li>
+                <li>Inform the invigilator if you need any clarification regarding the question paper</li>
+                <li>Maintain silence and decorum inside the exam hall</li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <strong>⚠️ Important Note:</strong> Students who arrive more than 15 minutes after the exam starts will NOT be allowed to enter the exam hall. Preserve this hall ticket as proof of admission to the examination.
+        </div>
+
+        <!-- SIGNATURE SECTION -->
+        <div class="signature-section">
+            <div class="signature">
+                <div class="signature-line">Controller of Examination</div>
+            </div>
+            <div class="signature">
+                <div class="signature-line">Principal</div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p><strong>Hall Ticket No:</strong> HT/2026/2024001234</p>
+            <p>Generated on: 19-01-2026 | Valid from: 20-01-2026</p>
+            <p>This hall ticket is valid only for the specified examination dates and subjects.</p>
+        </div>
     </div>
-
-    <hr>
-
-    <!-- CODE BREAKDOWN WITH COMMENTS -->
-    <h2>📝 Code Breakdown - Simple Version (For Learning)</h2>
-
-    <h3>Minimal Hall Ticket Code (Just the essentials):</h3>
-    <pre style="background-color: #f0f0f0; padding: 15px; border-left: 4px solid blue; overflow-x: auto;">
-&lt;!-- Basic Hall Ticket Structure --&gt;
-&lt;div class="ticket"&gt;
-    &lt;!-- Header with title --&gt;
-    &lt;h1&gt;UNIVERSITY NAME&lt;/h1&gt;
-    &lt;h2&gt;HALL TICKET&lt;/h2&gt;
-
-    &lt;!-- Student Details in Table Format --&gt;
-    &lt;h3&gt;Student Details&lt;/h3&gt;
-    &lt;table border="1"&gt;
-        &lt;tr&gt;
-            &lt;td&gt;&lt;strong&gt;Roll No&lt;/strong&gt;&lt;/td&gt;
-            &lt;td&gt;12345&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;&lt;strong&gt;Name&lt;/strong&gt;&lt;/td&gt;
-            &lt;td&gt;John Doe&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;&lt;strong&gt;Branch&lt;/strong&gt;&lt;/td&gt;
-            &lt;td&gt;Computer Science&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-
-    &lt;!-- Exam Schedule in Table Format --&gt;
-    &lt;h3&gt;Exam Schedule&lt;/h3&gt;
-    &lt;table border="1"&gt;
-        &lt;tr&gt;
-            &lt;th&gt;Subject&lt;/th&gt;
-            &lt;th&gt;Date&lt;/th&gt;
-            &lt;th&gt;Time&lt;/th&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Math&lt;/td&gt;
-            &lt;td&gt;20-01-2026&lt;/td&gt;
-            &lt;td&gt;10:00 AM&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/div&gt;</pre>
-
-    <h3>Key Points for Beginners:</h3>
-    <table border="1" style="margin: 20px 0;">
-        <tr style="background-color: #e8e8e8;">
-            <th>Element</th>
-            <th>Purpose</th>
-            <th>Example</th>
-        </tr>
-        <tr>
-            <td><strong>&lt;h1&gt; &lt;h2&gt;</strong></td>
-            <td>Large titles and headings</td>
-            <td>&lt;h1&gt;UNIVERSITY&lt;/h1&gt;</td>
-        </tr>
-        <tr>
-            <td><strong>&lt;table&gt;</strong></td>
-            <td>Creates structured data layout</td>
-            <td>&lt;table border="1"&gt;</td>
-        </tr>
-        <tr>
-            <td><strong>&lt;tr&gt;</strong></td>
-            <td>Table Row</td>
-            <td>&lt;tr&gt; &lt;/tr&gt;</td>
-        </tr>
-        <tr>
-            <td><strong>&lt;td&gt;</strong></td>
-            <td>Table Data (regular cell)</td>
-            <td>&lt;td&gt;12345&lt;/td&gt;</td>
-        </tr>
-        <tr>
-            <td><strong>&lt;th&gt;</strong></td>
-            <td>Table Header (bold cell)</td>
-            <td>&lt;th&gt;Roll No&lt;/th&gt;</td>
-        </tr>
-        <tr>
-            <td><strong>&lt;strong&gt;</strong></td>
-            <td>Make text bold</td>
-            <td>&lt;strong&gt;Important&lt;/strong&gt;</td>
-        </tr>
-        <tr>
-            <td><strong>&lt;ul&gt; &lt;li&gt;</strong></td>
-            <td>Unordered list (bullets)</td>
-            <td>&lt;li&gt;Instruction&lt;/li&gt;</td>
-        </tr>
-    </table>
-
 </body>
 </html>
