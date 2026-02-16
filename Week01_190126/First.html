@@ -1,103 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <title>Long List Example</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    .long-list { max-height: 240px; overflow:auto; border:1px solid #ddd; padding:8px; }
+    .long-list li { padding:4px 0; }
+  </style>
 </head>
 <body>
-    <h1>MY FIRST PROGRAM</h1>
-    <a href="https://www.google.com/">google</a>
+  <h1>Long Unordered List (scrollable)</h1>
+  <ul class="long-list">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+    <li>Item 5</li>
+    <li>Item 6</li>
+    <li>Item 7</li>
+    <li>Item 8</li>
+    <li>Item 9</li>
+    <li>Item 10</li>
+    <li>Item 11</li>
+    <li>Item 12</li>
+    <li>Item 13</li>
+    <li>Item 14</li>
+    <li>Item 15</li>
+    <li>Item 16</li>
+    <li>Item 17</li>
+    <li>Item 18</li>
+    <li>Item 19</li>
+    <li>Item 20</li>
+    <li>Item 21</li>
+    <li>Item 22</li>
+    <li>Item 23</li>
+    <li>Item 24</li>
+    <li>Item 25</li>
+    <li>Item 26</li>
+    <li>Item 27</li>
+    <li>Item 28</li>
+    <li>Item 29</li>
+    <li>Item 30</li>
+  </ul>
 
-    <h2>Understanding HTML Tables</h2>
-    
-    <!-- BASIC TABLE EXAMPLE -->
-    <h3>1. Basic Table (Simple 3x3)</h3>
-    <table border="1">
-        <tr>
-            <td>Name</td>
-            <td>Age</td>
-            <td>City</td>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>25</td>
-            <td>New York</td>
-        </tr>
-        <tr>
-            <td>Sarah</td>
-            <td>30</td>
-            <td>London</td>
-        </tr>
-    </table>
-
-    <!-- TABLE WITH HEADERS -->
-    <h3>2. Table with Header Row (Using &lt;th&gt;)</h3>
-    <table border="1">
-        <tr>
-            <th>Product</th>
-            <th>Price</th>
-            <th>Quantity</th>
-        </tr>
-        <tr>
-            <td>Apple</td>
-            <td>$1.50</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>Banana</td>
-            <td>$0.75</td>
-            <td>12</td>
-        </tr>
-    </table>
-
-    <!-- TABLE WITH PROPER STRUCTURE -->
-    <h3>3. Table with &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</h3>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Month</th>
-                <th>Sales</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>January</td>
-                <td>$5000</td>
-            </tr>
-            <tr>
-                <td>February</td>
-                <td>$6000</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <th>Total</th>
-                <th>$11000</th>
-            </tr>
-        </tfoot>
-    </table>
-
-    <!-- TABLE WITH MERGED CELLS -->
-    <h3>4. Table with Merged Cells (colspan & rowspan)</h3>
-    <table border="1">
-        <tr>
-            <th>Name</th>
-            <th colspan="2">Contact</th>
-        </tr>
-        <tr>
-            <td>John</td>
-            <td>john@email.com</td>
-            <td>123-456-7890</td>
-        </tr>
-        <tr>
-            <td rowspan="2">Sarah</td>
-            <td>sarah@email.com</td>
-            <td>987-654-3210</td>
-        </tr>
-        <tr>
-            <td colspan="2">Works at Tech Company</td>
-        </tr>
-    </table>
+  <h2>Long Ordered List</h2>
+  <ol>
+    <li>First</li>
+    <li>Second</li>
+    <li>Third</li>
+    <!-- continue as needed -->
+  </ol>
 </body>
 </html>

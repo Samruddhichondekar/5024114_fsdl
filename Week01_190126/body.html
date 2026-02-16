@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Head vs Body Example</title>
+  <meta name="description" content="Demo showing difference between head and body">
+  <style>body{font-family:Arial,sans-serif;margin:20px}.box{border:1px solid #ddd;padding:12px;margin:10px 0;background:#fafafa}</style>
+</head>
+<body>
+  <h1>Head vs Body — Simple Demo</h1>
+
+  <div class="box">
+    <h2>What lives in &lt;head&gt;?</h2>
+    <ul>
+      <li><strong>Title</strong> — shown in the browser tab (this page's title is inside &lt;head&gt;).</li>
+      <li><strong>Meta</strong> — page description, charset, viewport, etc.</li>
+      <li><strong>Link</strong> — stylesheets and icons.</li>
+      <li><strong>Script</strong> — setup scripts that run before or after load.</li>
+    </ul>
+    <p>These items are metadata; they are not directly visible inside the page body.</p>
+  </div>
+
+  <div class="box">
+    <h2>What lives in &lt;body&gt;?</h2>
+    <p>The <code>&lt;body&gt;</code> contains the visible content: headings, paragraphs, images, forms, etc.</p>
+    <p>Example visible content: this text, images, and interactive controls.</p>
+  </div>
+
+  <div class="box">
+    <h2>Minimal code summary</h2>
+    <pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;…metadata like &lt;title&gt;, &lt;meta&gt;, &lt;link&gt;…&lt;/head&gt;
+  &lt;body&gt;…visible content like &lt;h1&gt;, &lt;p&gt;, &lt;img&gt;…&lt;/body&gt;
+&lt;/html&gt;</pre>
+  </div>
+
+</body>
+</html>
