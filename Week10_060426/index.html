@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html ng-app="studentApp">
+<head>
+    <title>Student Management System</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #eef2f7; margin:0; padding:30px; }
+        .container { max-width: 1000px; margin:auto; }
+        h2 { text-align:center; margin-bottom:20px; }
+        .card { background:white; padding:20px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1); margin-bottom:20px; }
+        .form-group { display:flex; flex-direction:column; margin-bottom:15px; }
+        label { font-size:14px; margin-bottom:5px; color:#333; }
+        input, select { padding:10px; border-radius:8px; border:1px solid #ccc; outline:none; }
+        input:focus, select:focus { border-color:#4a90e2; }
+        .row { display:flex; gap:15px; }
+        .row .form-group { flex:1; }
+        .btn { padding:10px; border:none; border-radius:8px; cursor:pointer; }
+        .btn-primary { background:#4a90e2; color:white; }
+        .btn-danger { background:#e74c3c; color:white; }
+        .btn-warning { background:#f39c12; color:white; }
+        .btn:disabled { background:gray; cursor:not-allowed; }
+        .error { font-size:12px; color:red; }
+        table { width:100%; border-collapse:collapse; }
+        th { background:#4a90e2; color:white; padding:10px; }
+        td { padding:10px; text-align:center; }
+        tr:nth-child(even) { background:#f9f9f9; }
+        .actions button { margin:2px; }
+        .highlight { background:#fff3cd !important; }
+    </style>
+</head>
+<body ng-controller="studentController">
+
+<div class="container">
+    <h2>🎓 Student Management System</h2>
+
+    <!-- FORM -->
+    <div class="card">
+        <form name="studentForm" ng-submit="saveStudent(studentForm)" novalidate>
+            <div class="row">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="name" ng-model="student.name" required
+                           ng-pattern="/^[a-zA-Z ]+$/"
+                           ng-change="onNameChange()" ng-blur="onNameBlur()">
+                    <span class="error" ng-show="studentForm.name.$touched && studentForm.name.$error.required">Name is required</span>
+                    <span class="error" ng-show="studentForm.name.$error.pattern">Only letters allowed</span>
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="number" name="age" ng-model="student.age" min="18" max="60"
+                           required ng-blur="checkAge()">
+                    <span class="error" ng-show="studentForm.age.$touched && studentForm.age.$error.required">Age is required</span>
+                    <span class="error" ng-show="studentForm.age.$error.min || studentForm.age.$error.max">Age must be 18-60</span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label>Course</label>
+                    <select name="course" ng-model="student.course" required>
+                        <option value="">Select Course</option>
+                        <option ng-repeat="c in courses">{{c}}</option>
+                    </select>
+                    <span class="error" ng-show="studentForm.course.$touched && studentForm.course.$error.required">Course is required</span>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" ng-model="student.email" required ng-change="onEmailChange()">
+                    <span class="error" ng-show="studentForm.email.$touched && studentForm.email.$error.required">Email is required</span>
+                    <span class="error" ng-show="studentForm.email.$error.email">Invalid email</span>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="submit" ng-disabled="studentForm.$invalid">
+                {{editMode ? 'Update Student' : 'Add Student'}}
+            </button>
+        </form>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="card">
+        <input type="text" ng-model="searchText" placeholder="🔍 Search students..." style="width:100%; padding:10px;">
+    </div>
+
+    <!-- TABLE -->
+    <div class="card">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            <tr ng-repeat="s in students | filter:searchText" ng-class="{'highlight': editIndex === $index}">
+                <td>{{s.id}}</td>
+                <td>{{s.name}}</td>
+                <td>{{s.age}}</td>
+                <td>{{s.course}}</td>
+                <td>{{s.email}}</td>
+                <td class="actions">
+                    <button class="btn btn-warning" ng-click="editStudent(s,$index)">Edit</button>
+                    <button class="btn btn-danger" ng-click="deleteStudent($index)">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script>
+var app = angular.module("studentApp", []);
+
+app.controller("studentController", function($scope) {
+
+    $scope.courses = ["Computer Science (CS)", "Electrical", "EXTC", "Mechanical"];
+    $scope.students = JSON.parse(localStorage.getItem("students")) || [];
+    $scope.student = {};
+    $scope.editMode = false;
+    $scope.editIndex = -1;
+
+    // Events
+    $scope.onNameChange = function(){ console.log("Name changed:", $scope.student.name); };
+    $scope.onNameBlur = function(){ console.log("Name field left"); };
+    $scope.onEmailChange = function(){ console.log("Email typing..."); };
+    $scope.checkAge = function(){
+        if($scope.student.age < 18){ alert("Student must be at least 18"); }
+    };
+
+    // Save / Add
+    $scope.saveStudent = function(form){
+        form.$setSubmitted();
+        if(form.$invalid) return;
+
+        if($scope.editMode){
+            $scope.students[$scope.editIndex] = $scope.student;
+            $scope.editMode = false;
+        } else {
+            $scope.student.id = Date.now();
+            $scope.students.push($scope.student);
+        }
+
+        $scope.student = {};
+        $scope.editIndex = -1;
+        form.$setPristine();
+        form.$setUntouched();
+        $scope.save();
+    };
+
+    // Edit
+    $scope.editStudent = function(s,index){
+        $scope.student = angular.copy(s);
+        $scope.editMode = true;
+        $scope.editIndex = index;
+    };
+
+    // Delete
+    $scope.deleteStudent = function(index){
+        $scope.students.splice(index,1);
+        $scope.save();
+    };
+
+    // Save to localStorage
+    $scope.save = function(){
+        localStorage.setItem("students", JSON.stringify($scope.students));
+    };
+
+});
+</script>
+
+</body>
+</html>

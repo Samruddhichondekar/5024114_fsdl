@@ -1,43 +1,78 @@
 <!DOCTYPE html>
 <html ng-app="todoApp">
 <head>
-    <title>AngularJS Todo App</title>
+    <title>Advanced AngularJS Todo</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: Arial;
-            background: #f4f6f9;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f37198a2, #00f1fe00);
             display: flex;
             justify-content: center;
             margin-top: 50px;
         }
 
-        .container {
-            width: 350px;
+        .app {
+            width: 400px;
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
         }
 
         input {
             width: 70%;
-            padding: 8px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #000000;
         }
 
         button {
-            padding: 8px;
-            margin-left: 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
         }
 
-        li {
+        .add-btn {
+            background: #3a0016c7;
+            color: white;
+        }
+
+        .filters button {
+            margin: 5px;
+            background: #eee;
+        }
+
+        .task {
+            display: flex;
+            justify-content: space-between;
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 8px;
             margin-top: 10px;
-            list-style: none;
         }
 
         .done {
             text-decoration: line-through;
+            color: gray;
+        }
+
+        .actions button {
+            margin-left: 5px;
+        }
+
+        .counter {
+            margin-top: 10px;
+            font-size: 14px;
             color: gray;
         }
     </style>
@@ -45,43 +80,102 @@
 
 <body ng-controller="todoController">
 
-<div class="container">
-    <h2>📝 Todo App</h2>
+<div class="app">
 
-    <input type="text" ng-model="task">
-    <button ng-click="addTask()">Add</button>
+    <h2>🚀 Smart Todo App</h2>
 
-    <ul>
-        <li ng-repeat="t in tasks">
-            <span ng-class="{'done': t.completed}">
-                {{t.name}}
-            </span>
+    <!-- Add Task -->
+    <input type="text" ng-model="newTask" placeholder="Add new task...">
+    <button class="add-btn" ng-click="addTask()">Add</button>
+
+    <!-- Search -->
+    <input type="text" ng-model="searchText" placeholder="Search..." style="width:100%; margin-top:10px;">
+
+    <!-- Filters -->
+    <div class="filters">
+        <button ng-click="filterStatus='all'">All</button>
+        <button ng-click="filterStatus='completed'">Completed</button>
+        <button ng-click="filterStatus='pending'">Pending</button>
+    </div>
+
+    <!-- Task List -->
+    <div class="task"
+         ng-repeat="t in tasks | filter:searchText"
+         ng-show="filterTask(t)">
+
+        <span ng-class="{'done': t.completed}">
+            <span ng-if="!t.editing">{{t.name}}</span>
+
+            <input ng-if="t.editing" ng-model="t.name">
+        </span>
+
+        <div class="actions">
             <button ng-click="toggle(t)">✔</button>
-            <button ng-click="delete($index)">❌</button>
-        </li>
-    </ul>
+            <button ng-click="editTask(t)">✏</button>
+            <button ng-click="deleteTask($index)">❌</button>
+        </div>
+    </div>
+
+    <!-- Counter -->
+    <div class="counter">
+        Total: {{tasks.length}} |
+        Completed: {{completedCount()}} |
+        Pending: {{tasks.length - completedCount()}}
+    </div>
+
 </div>
 
 <script>
 var app = angular.module("todoApp", []);
 
 app.controller("todoController", function($scope) {
-    $scope.tasks = [];
+
+    // Load from localStorage
+    $scope.tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    $scope.filterStatus = 'all';
 
     $scope.addTask = function() {
-        if ($scope.task) {
-            $scope.tasks.push({name: $scope.task, completed: false});
-            $scope.task = "";
+        if ($scope.newTask) {
+            $scope.tasks.push({
+                name: $scope.newTask,
+                completed: false,
+                editing: false
+            });
+            $scope.newTask = "";
+            $scope.save();
         }
     };
 
     $scope.toggle = function(task) {
         task.completed = !task.completed;
+        $scope.save();
     };
 
-    $scope.delete = function(index) {
+    $scope.deleteTask = function(index) {
         $scope.tasks.splice(index, 1);
+        $scope.save();
     };
+
+    $scope.editTask = function(task) {
+        task.editing = !task.editing;
+        $scope.save();
+    };
+
+    $scope.completedCount = function() {
+        return $scope.tasks.filter(t => t.completed).length;
+    };
+
+    $scope.filterTask = function(task) {
+        if ($scope.filterStatus === 'completed') return task.completed;
+        if ($scope.filterStatus === 'pending') return !task.completed;
+        return true;
+    };
+
+    $scope.save = function() {
+        localStorage.setItem("tasks", JSON.stringify($scope.tasks));
+    };
+
 });
 </script>
 
