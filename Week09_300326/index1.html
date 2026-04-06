@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head>
+    <title>AngularJS Todo App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            width: 350px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 70%;
+            padding: 8px;
+        }
+
+        button {
+            padding: 8px;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-top: 10px;
+            list-style: none;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body ng-controller="todoController">
+
+<div class="container">
+    <h2>📝 Todo App</h2>
+
+    <input type="text" ng-model="task">
+    <button ng-click="addTask()">Add</button>
+
+    <ul>
+        <li ng-repeat="t in tasks">
+            <span ng-class="{'done': t.completed}">
+                {{t.name}}
+            </span>
+            <button ng-click="toggle(t)">✔</button>
+            <button ng-click="delete($index)">❌</button>
+        </li>
+    </ul>
+</div>
+
+<script>
+var app = angular.module("todoApp", []);
+
+app.controller("todoController", function($scope) {
+    $scope.tasks = [];
+
+    $scope.addTask = function() {
+        if ($scope.task) {
+            $scope.tasks.push({name: $scope.task, completed: false});
+            $scope.task = "";
+        }
+    };
+
+    $scope.toggle = function(task) {
+        task.completed = !task.completed;
+    };
+
+    $scope.delete = function(index) {
+        $scope.tasks.splice(index, 1);
+    };
+});
+</script>
+
+</body>
+</html>
