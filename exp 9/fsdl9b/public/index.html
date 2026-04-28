@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat App</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        #chat {
+            width: 300px;
+            height: 400px;
+            overflow-y: scroll;
+            margin: auto;
+            background: #222;
+            padding: 10px;
+        }
+
+        .msg {
+            text-align: left;
+            margin: 5px;
+            padding: 5px;
+            background: #333;
+            border-radius: 5px;
+        }
+
+        img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Live Chat</h2>
+
+<input id="user" placeholder="Username"><br><br>
+<input id="msg" placeholder="Message">
+<input type="file" id="image">
+<button onclick="send()">Send</button>
+
+<div id="chat"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+const socket = io();
+
+function send() {
+    const user = document.getElementById('user').value;
+    const text = document.getElementById('msg').value;
+    const file = document.getElementById('image').files[0];
+
+    if (!user) {
+        alert("Enter username");
+        return;
+    }
+
+    if (file) {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        fetch('/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            socket.emit('sendMessage', {
+                user,
+                text,
+                image: data.image
+            });
+        });
+    } else {
+        socket.emit('sendMessage', {
+            user,
+            text,
+            image: ""
+        });
+    }
+
+    document.getElementById('msg').value = "";
+}
+
+socket.on('message', (msg) => {
+    const chat = document.getElementById('chat');
+
+    chat.innerHTML += `
+        <div class="msg">
+            <b>${msg.user}</b>: ${msg.text || ""}
+            ${msg.image ? `<br><img src="/uploads/${msg.image}">` : ""}
+            <br><small>${msg.time}</small>
+        </div>
+    `;
+
+    chat.scrollTop = chat.scrollHeight;
+});
+</script>
+
+</body>
+</html>
